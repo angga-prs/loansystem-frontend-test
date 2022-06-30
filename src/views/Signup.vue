@@ -25,9 +25,9 @@
 					<div class="card z-index-0">
 						<div class="card-body">
 							<form role="form">
-								<argon-input type="email" id="email" placeholder="Email" aria-label="Email required" />
-								<argon-input type="text" id="username" placeholder="UserName" aria-label="Name required" />
-								<argon-input type="password" id="password" placeholder="Password" aria-label="Password required" />
+								<argon-input type="email" id="email" name="email" placeholder="Email" aria-label="Email required" v-model="regist.email"/>
+								<argon-input type="text" id="username" name="username" placeholder="UserName" aria-label="Name required" v-model="regist.username"/>
+								<argon-input type="password" id="password" name="password" placeholder="Password" aria-label="Password required" v-model="regist.password"/>
 								<argon-checkbox checked>
 									<label class="form-check-label" for="flexCheckDefault">
 										I agree the
@@ -36,7 +36,7 @@
 									</label>
 								</argon-checkbox>
 								<div class="text-center">
-									<argon-button type="button" fullWidth color="dark" variant="gradient" class="my-4 mb-2" id="button_submit" @click="register" >Sign up
+									<argon-button type="button" fullWidth color="dark" variant="gradient" class="my-4 mb-2" id="button_submit" @click="register($event)" >Sign up
 									</argon-button>
 								</div>
 								<p class="text-sm mt-3 mb-0 text-center">
@@ -63,14 +63,14 @@
 	const body = document.getElementsByTagName("body")[0];
 
 	export default {
-		name: "signin",
+		name: "signup",
 		data() {
 			return {
-				signin: {
-						email: "",
-						username: "",
-						password: "",
-					}
+				regist: {
+					email: null,
+					username: null,
+					password: null,
+				}
 			}
 		},
 		components: {
@@ -86,13 +86,17 @@
 			},
 			register() {
 			var data = {
-				email: this.signin.email,
-				username: this.signin.username
+				email: this.regist.email,
+				username: this.regist.username,
+				password: this.regist.password,
 			};
+			console.log(data);
+
 			RegisterServices.create(data)
 				.then(response => {
 					this.register.id = response.data.id;
 					console.log(response.data);
+					// console.log(data);
 					// this.submitted = true;
 				})
 				.catch(e => {

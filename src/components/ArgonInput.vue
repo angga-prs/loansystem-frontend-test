@@ -10,7 +10,8 @@
         :class="getClasses(size, valid)"
         :name="name"
         :id="id"
-        :value="value"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
         :placeholder="placeholder"
         :isRequired="isRequired"
       />
@@ -25,6 +26,7 @@
 export default {
   name: "argon-input",
   props: {
+    modelValue: String,
     size: {
       type: String,
       default: "default",
@@ -37,7 +39,7 @@ export default {
     iconDir: String,
     name: String,
     id: String,
-    value: String,
+    // value: String,
     placeholder: String,
     type: String,
     isRequired: Boolean,

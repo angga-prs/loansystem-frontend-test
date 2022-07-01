@@ -35,6 +35,14 @@
 											Conditions</a>
 									</label>
 								</argon-checkbox>
+								<select class="form-control" id="role" name="role" placeholder="Role" v-model="regist.role">
+									<option value="ROLE_ADMIN">Admin</option>
+									<option value="ROLE_USER">User</option>
+									<option value="ROLE_SPV">Supervisor</option>
+									<option value="ROLE_CS">Customer Service</option>
+									<option value="ROLE_IT">IT</option>
+									<option value="ROLE_TELLER">Teller</option>
+								</select>
 								<div class="text-center">
 									<argon-button type="button" fullWidth color="dark" variant="gradient" class="my-4 mb-2" id="button_submit" @click="register($event)" >Sign up
 									</argon-button>
@@ -60,6 +68,7 @@
 	import ArgonInput from "@/components/ArgonInput.vue";
 	import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 	import ArgonButton from "@/components/ArgonButton.vue";
+	// import CustomSelect from "@/components/CustomSelect.vue";
 	const body = document.getElementsByTagName("body")[0];
 
 	export default {
@@ -70,6 +79,7 @@
 					email: null,
 					username: null,
 					password: null,
+					role : null,
 				}
 			}
 		},
@@ -79,16 +89,22 @@
 			ArgonInput,
 			ArgonCheckbox,
 			ArgonButton,
+			// CustomSelect
 		},
 		methods: {
 			button_clicked(){
 				console.log('hai')
 			},
 			register() {
+				let role = {
+					role_id : this.regist.role
+				} 
 			var data = {
 				email: this.regist.email,
 				username: this.regist.username,
 				password: this.regist.password,
+				role : role
+
 			};
 			console.log(data);
 

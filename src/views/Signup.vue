@@ -96,9 +96,9 @@
 				console.log('hai')
 			},
 			register() {
-				let role = {
+				let role = [{
 					role_id : this.regist.role
-				} 
+				}] 
 			var data = {
 				email: this.regist.email,
 				username: this.regist.username,

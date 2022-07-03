@@ -28,14 +28,7 @@
 								<argon-input type="email" id="email" name="email" placeholder="Email" aria-label="Email required" v-model="regist.email"/>
 								<argon-input type="text" id="username" name="username" placeholder="UserName" aria-label="Name required" v-model="regist.username"/>
 								<argon-input type="password" id="password" name="password" placeholder="Password" aria-label="Password required" v-model="regist.password"/>
-								<argon-checkbox checked>
-									<label class="form-check-label" for="flexCheckDefault">
-										I agree the
-										<a href="javascript:;" class="text-dark font-weight-bolder">Terms and
-											Conditions</a>
-									</label>
-								</argon-checkbox>
-								<select class="form-control" id="role" name="role" placeholder="Role" v-model="regist.role">
+								<select class="form-control" id="role" name="role" placeholder="Role" aria-label="Role" v-model="regist.role">
 									<option value="ROLE_ADMIN">Admin</option>
 									<option value="ROLE_USER">User</option>
 									<option value="ROLE_SPV">Supervisor</option>
@@ -43,6 +36,14 @@
 									<option value="ROLE_IT">IT</option>
 									<option value="ROLE_TELLER">Teller</option>
 								</select>
+								<argon-checkbox checked>
+									<label class="form-check-label" for="flexCheckDefault">
+										I agree the
+										<a href="javascript:;" class="text-dark font-weight-bolder">Terms and
+											Conditions</a>
+									</label>
+								</argon-checkbox>
+								
 								<div class="text-center">
 									<argon-button type="button" fullWidth color="dark" variant="gradient" class="my-4 mb-2" id="button_submit" @click="register($event)" >Sign up
 									</argon-button>
